@@ -8,7 +8,7 @@ namespace StickyHeader.Controls
 {
     public class CustomCollectionView : CollectionView
     {
-        private View _customHeader, _secondContent;
+        private View _customHeader, _secondContent, _sticyHeader;
 
         public CustomCollectionView()
         {
@@ -26,6 +26,12 @@ namespace StickyHeader.Controls
         }
 
         [TypeConverter(typeof(ReferenceTypeConverter))]
+        public View StickyHeader
+        {
+            set => _sticyHeader = value;
+        }
+
+        [TypeConverter(typeof(ReferenceTypeConverter))]
         public View SecondContent
         {
             set => _secondContent = value;
@@ -34,9 +40,11 @@ namespace StickyHeader.Controls
         private async void GoodCollectionView_Scrolled(object sender, ItemsViewScrolledEventArgs e)
         {
             double scrollY = e.VerticalOffset < 0 ? 0 : e.VerticalOffset;
-            scrollY = scrollY > _customHeader.Height ? _customHeader.Height : scrollY;
+            double maximumHeight = _customHeader.Height - _sticyHeader.Height;
 
-            ////Show or hide the header and scroll the second view
+            scrollY = scrollY > maximumHeight ? maximumHeight : scrollY;
+
+            //Show or hide the header and scroll the second view
             await Task.WhenAll(_customHeader?.TranslateTo(0, -scrollY, 50), 
                 _secondContent?.TranslateTo(0, -scrollY + _customHeader.Height, 50));
         }

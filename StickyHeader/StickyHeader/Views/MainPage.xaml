@@ -19,7 +19,8 @@
             ItemSizingStrategy="MeasureFirstItem"
             ItemsLayout="VerticalGrid, 3"
             ItemsSource="{Binding Images}"
-            SecondContent="labelView">
+            SecondContent="labelView"
+            StickyHeader="stickyHeader">
 
             <CollectionView.ItemTemplate>
                 <DataTemplate>
@@ -45,6 +46,7 @@
                 Text="This is my HEADER Content!!!" />
 
             <StackLayout
+                x:Name="stickyHeader"
                 BackgroundColor="AliceBlue"
                 HeightRequest="56"
                 HorizontalOptions="FillAndExpand"
