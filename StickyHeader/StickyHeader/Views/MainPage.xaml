@@ -12,7 +12,7 @@
 
     <Grid>
 
-        <ctrls:GoodCollectionView
+        <ctrls:CustomCollectionView
             x:Name="collectionView"
             Grid.RowSpan="2"
             CustomHeader="myCustomHeader"
@@ -34,7 +34,7 @@
                     </Image>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
-        </ctrls:GoodCollectionView>
+        </ctrls:CustomCollectionView>
 
         <StackLayout x:Name="myCustomHeader" VerticalOptions="Start">
             <Label

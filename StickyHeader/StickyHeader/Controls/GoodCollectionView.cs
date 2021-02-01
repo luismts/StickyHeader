@@ -6,11 +6,11 @@ using Xamarin.Forms;
 
 namespace StickyHeader.Controls
 {
-    public class GoodCollectionView : CollectionView
+    public class CustomCollectionView : CollectionView
     {
         private View _customHeader, _secondContent;
 
-        public GoodCollectionView()
+        public CustomCollectionView()
         {
             Scrolled += GoodCollectionView_Scrolled;
         }
