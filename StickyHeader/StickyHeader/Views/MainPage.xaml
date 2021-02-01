@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="StickyHeader.Views.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ctrls="clr-namespace:StickyHeader.Controls"
+    xmlns:vm="clr-namespace:StickyHeader.ViewModels">
+
+    <ContentPage.BindingContext>
+        <vm:MainPageViewModel x:Name="ViewModel" />
+    </ContentPage.BindingContext>
+
+    <Grid>
+
+        <ctrls:GoodCollectionView
+            x:Name="collectionView"
+            Grid.RowSpan="2"
+            CustomHeader="myCustomHeader"
+            ItemSizingStrategy="MeasureFirstItem"
+            ItemsLayout="VerticalGrid, 3"
+            ItemsSource="{Binding Images}"
+            SecondContent="labelView">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Image
+                        Margin="0"
+                        HeightRequest="120"
+                        HorizontalOptions="FillAndExpand"
+                        Source="{Binding .}">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </ctrls:GoodCollectionView>
+
+        <StackLayout x:Name="myCustomHeader" VerticalOptions="Start">
+            <Label
+                Padding="50"
+                BackgroundColor="DeepSkyBlue"
+                FontSize="Large"
+                HorizontalTextAlignment="Center"
+                Text="This is my HEADER Content!!!" />
+
+            <StackLayout
+                BackgroundColor="AliceBlue"
+                HeightRequest="56"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal">
+                <Button
+                    x:Name="btn1"
+                    Clicked="btn1_Clicked"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Tab1" />
+
+                <Button
+                    x:Name="btn2"
+                    Clicked="btn2_Clicked"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Tab2" />
+            </StackLayout>
+        </StackLayout>
+
+        <Label
+            x:Name="labelView"
+            Padding="50"
+            BackgroundColor="LightGoldenrodYellow"
+            FontSize="Large"
+            HorizontalTextAlignment="Center"
+            IsVisible="False"
+            Text="This is TAB2 Content !!!" />
+
+    </Grid>
+
+</ContentPage>

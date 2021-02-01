@@ -133,4 +133,13 @@
       <Name>StickyHeader</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\path.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\thinking.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\time.jpg" />
+  </ItemGroup>
 </Project>
